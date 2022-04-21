@@ -16,7 +16,7 @@
       </div>
       <div
         class="guess"
-        v-for="(guess, i) in guesses"
+        v-for="(guess, i) in guessesReversed"
         :key="i"
         @click.stop="onClick(guess.word, $event)"
       >
@@ -48,6 +48,11 @@ export default {
         .forEach((e) => e.classList.remove("clicked"));
 
       event.currentTarget.classList.add("clicked");
+    },
+  },
+  computed: {
+    guessesReversed: function () {
+      return this.guesses.slice().reverse();
     },
   },
 };
