@@ -4,6 +4,7 @@ git checkout --orphan gh-pages
 
 echo "Building started..."
 
+npm install
 npm run build
 
 git --work-tree dist add --all
