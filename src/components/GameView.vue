@@ -13,6 +13,7 @@ import {
   revealAll,
 } from "@/game/obfuscate";
 import { normalize, isValid, pluralize } from "@/game/words";
+import { saveLocalData, loadLocalGameData } from "@/game/localData";
 import ArticleText from "@/components/ArticleText.vue";
 import ControlBar from "@/components/ControlBar.vue";
 
@@ -39,6 +40,12 @@ export default {
       this.article = article;
 
       revealCommonWords(this.article, this.words);
+
+      const gameData = loadLocalGameData();
+      if (!gameData) return;
+
+      gameData.guesses.forEach((guess) => this.guess(guess.word));
+      this.finished = gameData.finished;
     });
   },
   methods: {
@@ -62,6 +69,7 @@ export default {
         });
       });
 
+      saveLocalData("testdate", this.guesses, this.guessNumber, this.finished);
       this.checkWin();
       this.guessNumber++;
     },

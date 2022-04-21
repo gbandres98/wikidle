@@ -5,8 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "deploy": "node scripts/gh-pages-deploy.mjs"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
@@ -17,11 +16,11 @@
     "core-js": "^3.8.3",
     "lodash.deburr": "^4.1.0",
     "rosaenlg-pluralize-es": "^3.2.1",
+    "uuid": "^8.3.2",
     "vue": "^3.2.33"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
-    "execa": "latest",
     "@babel/eslint-parser": "^7.12.16",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
@@ -30,6 +29,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^8.0.3",
+    "execa": "latest",
     "prettier": "^2.4.1"
   }
 }
