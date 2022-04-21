@@ -4,13 +4,18 @@ import firebase from "firebase-admin";
 firebase.initializeApp();
 
 http("getArticle", (req, res) => {
-  console.log("start");
+  res.set("Access-Control-Allow-Origin", "*");
+
+  if (req.method === "OPTIONS") {
+    // Send response to OPTIONS requests
+    res.set("Access-Control-Allow-Methods", "GET");
+    res.set("Access-Control-Allow-Headers", "Content-Type");
+    res.set("Access-Control-Max-Age", "3600");
+    res.status(204).send("");
+    return;
+  }
 
   const date = new Date();
-
-  console.log(
-    `/articles/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
-  );
 
   const articleRef = firebase
     .firestore()

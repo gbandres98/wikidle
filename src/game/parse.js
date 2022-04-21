@@ -35,7 +35,7 @@ const createElements = (articleDOM) => {
   articleDOM.childNodes.forEach((node) => {
     if (node.nodeType == 1) {
       node.innerHTML = node.innerHTML.replace(
-        /([a-zA-Z1-9áéíóúñ]+)/g,
+        /([a-zA-Z0-9áéíóúñ]+)/g,
         '<span class="word">$1</span>'
       );
     }
@@ -43,7 +43,7 @@ const createElements = (articleDOM) => {
       const newNode = document.createElement("span");
       newNode.classList.add("paragraph");
       newNode.innerHTML = node.nodeValue.replace(
-        /([a-zA-Z1-9áéíóúñ]+)/g,
+        /([a-zA-Z0-9áéíóúñ]+)/g,
         '<span class="word">$1</span>'
       );
 

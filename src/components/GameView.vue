@@ -100,7 +100,7 @@ export default {
 
         if (i === this.scrollIndex)
           wordElement.scrollIntoView({
-            block: "start",
+            block: "center",
           });
       });
 

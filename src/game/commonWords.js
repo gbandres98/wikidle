@@ -1,4 +1,5 @@
 const commonWords = [
+  "y",
   "a",
   "ante",
   "bajo",
