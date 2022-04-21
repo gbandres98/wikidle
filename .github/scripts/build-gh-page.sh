@@ -7,6 +7,9 @@ echo "Building started..."
 npm install
 npm run build
 
+git config user.email "mail@gbandres.com"
+git config user.name "gbandres98"
+
 git --work-tree dist add --all
 git --work-tree dist commit -m "gh-pages"
 
