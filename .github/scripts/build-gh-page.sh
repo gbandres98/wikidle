@@ -7,6 +7,8 @@ echo "Building started..."
 npm install
 npm run build
 
+echo "wikidle.gbandres.com" > dist/CNAME
+
 git config user.email "mail@gbandres.com"
 git config user.name "gbandres98"
 
