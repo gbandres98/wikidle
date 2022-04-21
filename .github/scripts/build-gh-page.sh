@@ -2,7 +2,7 @@
 
 git checkout --orphan gh-pages
 
-echo "Building started...");
+echo "Building started..."
 
 npm run build
 
