@@ -21,11 +21,11 @@ const generateUserInfo = async () => {
   };
 };
 
-const saveLocalData = async (date, guesses, guessNumber, finished) => {
+const saveLocalData = async (day, guesses, guessNumber, finished) => {
   const gameData = {
-    date,
+    day,
     guesses,
-    guessNumber: guessNumber - 1,
+    guessNumber: guessNumber,
     finished,
   };
 
@@ -37,20 +37,20 @@ const saveLocalData = async (date, guesses, guessNumber, finished) => {
     const user = await generateUserInfo();
     data = {
       user,
-      games: [],
+      games: {},
     };
   }
 
-  data.games = [gameData]; // TODO
+  data.games[day] = gameData;
 
   localStorage.setItem("localData", JSON.stringify(data));
 };
 
-const loadLocalGameData = () => {
+const loadLocalGameData = (day) => {
   const dataJson = localStorage.getItem("localData");
   const data = JSON.parse(dataJson);
 
-  if (data && data.games.length > 0) return data.games.at(-1);
+  if (data && data.games) return data.games[day];
 };
 
 export { saveLocalData, loadLocalGameData };

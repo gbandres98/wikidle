@@ -1,0 +1,19 @@
+{
+  "name": "getarticle",
+  "version": "1.0.0",
+  "description": "getArticle cloud function",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "npm -- run unit-test"
+  },
+  "dependencies": {
+    "@google-cloud/debug-agent": "^5.0.0",
+    "@google-cloud/functions-framework": "^3.0.0",
+    "cors": "^2.8.5",
+    "escape-html": "^1.0.3",
+    "firebase-admin": "^10.0.2"
+  },
+  "author": "",
+  "license": "ISC"
+}

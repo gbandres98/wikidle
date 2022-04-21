@@ -24,6 +24,7 @@ export default {
     return {
       article: {},
       articleTitle: "",
+      articleDay: "",
       words: [],
       guesses: [],
       guessNumber: 1,
@@ -35,13 +36,14 @@ export default {
   beforeMount() {
     getArticle("Cinchona_officinalis").then((res) => {
       this.articleTitle = res.title;
+      this.articleDay = res.day;
       const article = parseArticle(res);
       this.words = obfuscate(article);
       this.article = article;
 
       revealCommonWords(this.article, this.words);
 
-      const gameData = loadLocalGameData();
+      const gameData = loadLocalGameData(res.day);
       if (!gameData) return;
 
       gameData.guesses.forEach((guess) => this.guess(guess.word));
@@ -69,7 +71,12 @@ export default {
         });
       });
 
-      saveLocalData("testdate", this.guesses, this.guessNumber, this.finished);
+      saveLocalData(
+        this.articleDay,
+        this.guesses,
+        this.guessNumber,
+        this.finished
+      );
       this.checkWin();
       this.guessNumber++;
     },
