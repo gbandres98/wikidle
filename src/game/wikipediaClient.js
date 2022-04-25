@@ -5,7 +5,7 @@ const getArticle = async () => {
 
   const response = await fetch(
     "https://es.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&explaintext&format=json&titles=" +
-      dailyArticle.article
+      dailyArticle.title
   );
 
   if (!response.ok) throw Error("Error descargando artículo");

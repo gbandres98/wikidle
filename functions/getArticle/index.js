@@ -3,6 +3,9 @@ import firebase from "firebase-admin";
 
 firebase.initializeApp();
 
+const articleIDFromDate = (date) =>
+  `/articles/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+
 http("getArticle", (req, res) => {
   res.set("Access-Control-Allow-Origin", "*");
 
@@ -17,11 +20,7 @@ http("getArticle", (req, res) => {
 
   const date = new Date();
 
-  const articleRef = firebase
-    .firestore()
-    .doc(
-      `/articles/${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`
-    );
+  const articleRef = firebase.firestore().doc(articleIDFromDate(date));
 
   articleRef.get().then((article) => res.send(JSON.stringify(article.data())));
 });

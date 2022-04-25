@@ -12,7 +12,10 @@
     "@google-cloud/functions-framework": "^3.0.0",
     "cors": "^2.8.5",
     "escape-html": "^1.0.3",
-    "firebase-admin": "^10.0.2"
+    "firebase-admin": "^10.0.2",
+    "jsdom": "^19.0.0",
+    "moment": "^2.29.3",
+    "node-fetch": "^3.2.3"
   },
   "author": "",
   "license": "ISC"

@@ -10,7 +10,7 @@ const getDailyArticle = async () => {
   const d = new Date();
 
   return {
-    article: "Error_de_software",
+    title: "Error_de_software",
     date: `${d.getFullYear}-${d.getMonth + 1}-${d.getDate}`,
   };
 };
