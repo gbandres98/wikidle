@@ -120,7 +120,11 @@ export default {
       if (finished) {
         this.finished = true;
         revealAll(this.article, this.words);
-        alert("qué lista jejejej (" + this.guessNumber + " palabras)");
+        alert(
+          "Felicidades! Has averiguado el artículo en " +
+            this.guessNumber +
+            " palabras"
+        );
       }
     },
   },
