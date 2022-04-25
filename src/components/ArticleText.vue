@@ -60,10 +60,6 @@ export default {
   font-size: 2.5em;
 }
 
-.word {
-  transition: 0.25s;
-}
-
 .glow {
   text-shadow: 0px 0px 5px green;
 }

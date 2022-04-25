@@ -1,6 +1,7 @@
 <template>
   <div class="guessContainer">
     <div class="buttonContainer">
+      <button @click="scrollTop">Arriba</button>
       <font-awesome-icon
         icon="angle-down"
         @click="this.open = !this.open"
@@ -49,6 +50,9 @@ export default {
 
       event.currentTarget.classList.add("clicked");
     },
+    scrollTop: function () {
+      this.$emit("scrollTop");
+    },
   },
   computed: {
     guessesReversed: function () {
@@ -59,14 +63,26 @@ export default {
 </script>
 
 <style scoped>
+@media (min-width: 961px) {
+  .guessList {
+    max-height: 80vh !important;
+  }
+
+  .closeButton {
+    display: none;
+  }
+}
+
 .buttonContainer {
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 5px;
 }
 
 .closeButton {
   font-size: 1.5em;
   transition: 1s;
+  cursor: pointer;
 }
 
 .closeButton.closed {

@@ -1,6 +1,13 @@
 <template>
-  <ControlBar :guesses="guesses" @guess="guess" @scrollToWord="scrollToWord" />
-  <ArticleText :article="article" :words="words" @click="clearHighlights" />
+  <div class="game">
+    <ArticleText :article="article" :words="words" @click="clearHighlights" />
+    <ControlBar
+      :guesses="guesses"
+      @guess="guess"
+      @scrollToWord="scrollToWord"
+      @scrollTop="scrollTop"
+    />
+  </div>
 </template>
 
 <script>
@@ -106,6 +113,11 @@ export default {
 
       this.scrollIndex++;
     },
+    scrollTop: function () {
+      window.scrollTo(0, 0);
+      this.scrollIndex = 0;
+      this.clearHighlights();
+    },
     clearHighlights: function () {
       document
         .querySelectorAll(".highlight")
@@ -131,4 +143,19 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style>
+@media (min-width: 961px) {
+  .game {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .controls {
+    flex: 0 0 450px;
+  }
+
+  .articleText {
+    flex: 0 0 calc(100vw - 500px);
+  }
+}
+</style>

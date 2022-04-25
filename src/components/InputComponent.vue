@@ -1,6 +1,6 @@
 <template>
   <form class="input" @submit.prevent="onSubmit">
-    <input type="text" v-model="value" />
+    <input type="text" v-model="value" @keydown.space.prevent />
     <button class="submitButton">Enviar</button>
   </form>
 </template>
