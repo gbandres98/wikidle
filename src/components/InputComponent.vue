@@ -1,11 +1,13 @@
 <template>
   <form class="input" @submit.prevent="onSubmit">
-    <input type="text" v-model="value" @keydown.space.prevent />
+    <input type="text" :value="value" @keypress="inputText" />
     <button class="submitButton">Enviar</button>
   </form>
 </template>
 
 <script>
+const charRegex = /^[a-zA-Z0-9áéíóú]$/;
+
 export default {
   name: "InputComponent",
   data: function () {
@@ -17,6 +19,10 @@ export default {
     onSubmit: function () {
       this.$emit("submitGuess", this.value);
       this.value = "";
+    },
+    inputText: function (event) {
+      let inputChar = String.fromCharCode(event.keyCode);
+      if (!charRegex.test(inputChar)) event.preventDefault();
     },
   },
 };
