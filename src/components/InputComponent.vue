@@ -1,12 +1,13 @@
 <template>
   <form class="input" @submit.prevent="onSubmit">
-    <input type="text" :value="value" @keypress="inputText" />
+    <input type="text" v-model="value" />
     <button class="submitButton">Enviar</button>
   </form>
 </template>
 
 <script>
 const charRegex = /^[a-zA-Z0-9áéíóú]$/;
+const filterRegex = /[^a-zA-Z0-9áéíóú]/g;
 
 export default {
   name: "InputComponent",
@@ -23,6 +24,14 @@ export default {
     inputText: function (event) {
       let inputChar = String.fromCharCode(event.keyCode);
       if (!charRegex.test(inputChar)) event.preventDefault();
+    },
+    filterText: function () {
+      this.value = this.value.replace(filterRegex, "");
+    },
+  },
+  watch: {
+    value() {
+      this.filterText();
     },
   },
 };

@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style>
-@import url("http://fonts.cdnfonts.com/css/linux-libertine");
+@import url("https://fonts.cdnfonts.com/css/linux-libertine");
 
 .articleText {
   font-family: sans-serif;
