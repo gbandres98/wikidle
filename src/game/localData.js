@@ -1,23 +1,24 @@
 import { v4 as uuidv4 } from "uuid";
+import { postData } from "./client";
 
 const generateUserInfo = async () => {
   const id = uuidv4();
-  let country = "unknown";
+  let ipData = {};
 
   try {
-    const res = await fetch("https://ip-api.com/json");
+    const res = await fetch("https://ipinfo.io/json?token=99dd0e21f00142");
 
     if (res.ok) {
-      const ipData = await res.json();
+      const data = await res.json();
 
-      if (ipData.country) country = ipData.country;
+      if (data) ipData = data;
     }
     // eslint-disable-next-line
   } catch {}
 
   return {
     id,
-    country,
+    ipData,
   };
 };
 
@@ -44,6 +45,7 @@ const saveLocalData = async (day, guesses, guessNumber, finished) => {
   data.games[day] = gameData;
 
   localStorage.setItem("localData", JSON.stringify(data));
+  postData(gameData);
 };
 
 const loadLocalGameData = (day) => {

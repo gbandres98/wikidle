@@ -15,4 +15,24 @@ const getDailyArticle = async () => {
   };
 };
 
-export { getDailyArticle };
+const postData = async (game) => {
+  const dataJson = localStorage.getItem("localData");
+  const data = JSON.parse(dataJson);
+
+  game.timestamp = Date.now();
+
+  const req = {
+    user: data.user,
+    game: game,
+  };
+
+  fetch("https://europe-west3-wikidle.cloudfunctions.net/saveStats", {
+    method: "POST",
+    body: JSON.stringify(req),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+export { getDailyArticle, postData };
