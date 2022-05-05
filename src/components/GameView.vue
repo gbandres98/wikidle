@@ -144,7 +144,7 @@ export default {
 </script>
 
 <style>
-@media (min-width: 961px) {
+@media (orientation: landscape) {
   .game {
     display: flex;
     flex-direction: row;

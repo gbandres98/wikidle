@@ -63,7 +63,7 @@ export default {
 </script>
 
 <style scoped>
-@media (min-width: 961px) {
+@media (orientation: landscape) {
   .guessList {
     max-height: 80vh !important;
   }

@@ -57,7 +57,7 @@ for (let i = 0; i < 10; i++) {
   const dateCopy = new Date(date.getTime());
   const articleExists = await dayHasArticle(dateCopy);
 
-  if (!articleExists) {
+  if (articleExists) {
     saveRandomArticle(dateCopy);
   }
 

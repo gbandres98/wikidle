@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style>
-@media (max-width: 960px) {
+@media (orientation: portrait) {
   .controls {
     position: fixed;
     bottom: 0;
@@ -45,7 +45,7 @@ export default {
   }
 }
 
-@media (min-width: 961px) {
+@media (orientation: landscape) {
   .controls {
     position: fixed;
     right: 0;
