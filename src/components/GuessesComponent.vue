@@ -1,7 +1,7 @@
 <template>
   <div class="guessContainer">
     <div class="buttonContainer">
-      <button @click="scrollTop">Arriba</button>
+      <button @click="scrollTop">Ir arriba</button>
       <font-awesome-icon
         icon="angle-down"
         @click="this.open = !this.open"

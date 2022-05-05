@@ -25,4 +25,15 @@ body {
   margin: 0;
   overflow-x: hidden;
 }
+
+input {
+  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+button {
+  padding: 5px 15px;
+}
 </style>

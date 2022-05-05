@@ -1,5 +1,6 @@
 const commonWords = [
   "del",
+  "es",
   "y",
   "a",
   "ante",

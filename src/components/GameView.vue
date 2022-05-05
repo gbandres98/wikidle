@@ -78,13 +78,15 @@ export default {
         });
       });
 
+      this.checkWin();
+
       saveLocalData(
         this.articleDay,
         this.guesses,
         this.guessNumber,
         this.finished
       );
-      this.checkWin();
+
       this.guessNumber++;
     },
     scrollToWord: function (word) {

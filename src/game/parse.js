@@ -35,7 +35,7 @@ const createElements = (articleDOM) => {
   articleDOM.childNodes.forEach((node) => {
     if (node.nodeType == 1) {
       node.innerHTML = node.innerHTML.replace(
-        /([a-zA-Z0-9áéíóúñ]+)/g,
+        /([a-zA-Z0-9áéíóúñäëïöüç]+)/g,
         '<span class="word">$1</span>'
       );
     }

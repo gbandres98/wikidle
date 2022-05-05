@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "deploy": "gcloud functions deploy saveStats --runtime nodejs16 --trigger-http --region europe-west3 --allow-unauthenticated"
+    "deploySaveStats": "gcloud functions deploy saveStats --runtime nodejs16 --trigger-http --region europe-west3 --allow-unauthenticated",
+    "deployTrigger": "gcloud functions deploy onStatCreate --runtime nodejs16 --trigger-event 'providers/cloud.firestore/eventTypes/document.write' --trigger-resource 'projects/wikidle/databases/(default)/documents/stats/games/{year}/{month}/{day}/{userId}' --region europe-west3 --allow-unauthenticated"
   },
   "dependencies": {
     "@google-cloud/debug-agent": "^5.0.0",

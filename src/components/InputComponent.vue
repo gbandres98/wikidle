@@ -1,7 +1,7 @@
 <template>
   <form class="input" @submit.prevent="onSubmit">
     <input type="text" v-model="value" />
-    <button class="submitButton">Enviar</button>
+    <button class="submitButton">Revelar</button>
   </form>
 </template>
 
@@ -39,7 +39,7 @@ export default {
 
 <style scoped>
 .input {
-  text-align: center;
+  text-align: right;
 }
 
 .submitButton {
