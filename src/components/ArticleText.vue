@@ -1,10 +1,14 @@
 <template>
+  <Loading :show="!articleHtml" />
   <div v-html="articleHtml" class="articleText"></div>
 </template>
 
 <script>
+import Loading from "@/components/Loading.vue";
+
 export default {
   name: "ArticleText",
+  components: { Loading },
   props: {
     article: Object,
     words: Array,
