@@ -1,5 +1,7 @@
 const commonWords = [
   "del",
+  "muy",
+  "más",
   "es",
   "y",
   "a",
