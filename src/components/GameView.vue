@@ -126,7 +126,7 @@ export default {
         .forEach((e) => e.classList.remove("highlight"));
     },
     checkWin: function () {
-      const finished = this.articleTitle.split(" ").every((word) => {
+      const finished = this.articleTitle.split(/[ -.,]/).every((word) => {
         word = normalize(word);
         return this.guesses.some((guess) => guess.word === word);
       });
