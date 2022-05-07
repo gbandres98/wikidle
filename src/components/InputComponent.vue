@@ -6,8 +6,8 @@
 </template>
 
 <script>
-const charRegex = /^[a-zA-Z0-9áéíóú]$/;
-const filterRegex = /[^a-zA-Z0-9áéíóú]/g;
+const charRegex = /^[a-zA-Z0-9áÁéÉíÍóÓúÚñÑäÄëËïÏöÖüÜçÇ]$/;
+const filterRegex = /[^a-zA-Z0-9áÁéÉíÍóÓúÚñÑäÄëËïÏöÖüÜçÇ]/g;
 
 export default {
   name: "InputComponent",
