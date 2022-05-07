@@ -1,11 +1,6 @@
 <template>
   <div class="loader" v-show="show">
-    <font-awesome-icon
-      icon="spinner"
-      @click="this.open = !this.open"
-      class="closeButton"
-      :class="{ closed: !open }"
-    />
+    <font-awesome-icon icon="spinner" />
     <div>Cargando artículo...</div>
   </div>
 </template>
