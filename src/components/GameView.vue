@@ -21,6 +21,7 @@ import {
 } from "@/game/obfuscate";
 import { normalize, isValid, pluralize } from "@/game/words";
 import { saveLocalData, loadLocalGameData } from "@/game/localData";
+import commonWords from "@/game/commonWords";
 import ArticleText from "@/components/ArticleText.vue";
 import ControlBar from "@/components/ControlBar.vue";
 
@@ -128,6 +129,7 @@ export default {
     checkWin: function () {
       const finished = this.articleTitle.split(/[ -.,]/).every((word) => {
         word = normalize(word);
+        if (commonWords.map((cw) => normalize(cw)).includes(word)) return true;
         return this.guesses.some((guess) => guess.word === word);
       });
 
