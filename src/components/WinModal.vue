@@ -49,7 +49,7 @@ export default {
   inheritAttrs: false,
   data() {
     return {
-      shareUrl: "https://wikidle.gbandres.com",
+      shareUrl: "wikidle.gbandres.com",
     };
   },
   computed: {
