@@ -1,6 +1,9 @@
 <template>
   <div class="navbar">
     <span class="title">Wikidle</span>
+    <div class="navbar-button" @click="openWinModal" v-show="finished">
+      <font-awesome-icon icon="trophy" />
+    </div>
     <div class="navbar-button" @click="openInfoModal">
       <font-awesome-icon icon="circle-question" />
     </div>
@@ -8,6 +11,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "NavbarComponent",
   methods: {
@@ -16,7 +21,13 @@ export default {
         component: "InfoModal",
       });
     },
+    openWinModal: function () {
+      this.$vfm.show({
+        component: "WinModal",
+      });
+    },
   },
+  computed: mapState(["finished"]),
 };
 </script>
 

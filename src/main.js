@@ -6,6 +6,7 @@ import {
   faSpinner,
   faCircleQuestion,
   faX,
+  faTrophy,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { vfmPlugin } from "vue-final-modal";
@@ -17,6 +18,7 @@ library.add(faAngleDown);
 library.add(faSpinner);
 library.add(faCircleQuestion);
 library.add(faX);
+library.add(faTrophy);
 
 createApp(App)
   .use(store)
