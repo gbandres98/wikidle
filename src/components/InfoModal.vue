@@ -11,8 +11,8 @@
     <span class="modal__title">Wikidle</span>
     <div class="modal__content">
       <p>
-        Hola! Wikidle es un juego basado en el que tienes que adivinar qué
-        articulo de la Wikipedia estás "leyendo".
+        Hola! Wikidle es un juego en el que tienes que adivinar qué articulo de
+        la Wikipedia estás "leyendo".
       </p>
       <p>
         Escribe una palabra para ver si existe en el artículo. Escribe el título
