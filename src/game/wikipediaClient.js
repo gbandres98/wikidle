@@ -1,4 +1,5 @@
 import { getDailyArticle } from "./client";
+import store from "@/store";
 
 const getArticle = async () => {
   const dailyArticle = await getDailyArticle();
@@ -9,6 +10,8 @@ const getArticle = async () => {
   );
 
   if (!response.ok) throw Error("Error descargando artículo");
+
+  store.commit("setArticleId", dailyArticle.title);
 
   const responseData = await response.json();
   const pageId = Object.keys(responseData.query.pages)[0];

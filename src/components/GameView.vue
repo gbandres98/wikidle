@@ -16,6 +16,7 @@
 <script>
 import { getArticle } from "@/game/wikipediaClient";
 import { parseArticle } from "@/game/parse";
+import { mapState } from "vuex";
 import {
   obfuscate,
   revealWords,
@@ -36,19 +37,16 @@ export default {
     return {
       article: {},
       articleTitle: "",
-      articleDay: "",
       words: [],
       guesses: [],
-      guessNumber: 1,
       lastScrolledWord: "",
       scrollIndex: 0,
-      finished: false,
     };
   },
   beforeMount() {
     getArticle("Cinchona_officinalis").then((res) => {
       this.articleTitle = res.title;
-      this.articleDay = res.day;
+      this.$store.commit("setArticleDay", res.day);
       const article = parseArticle(res);
       this.words = obfuscate(article);
       this.article = article;
@@ -59,9 +57,10 @@ export default {
       if (!gameData) return;
 
       gameData.guesses.forEach((guess) => this.guess(guess.word));
-      this.finished = gameData.finished;
+      this.$store.commit("setFinished", true);
     });
   },
+  computed: mapState(["finished", "articleDay", "guessNumber"]),
   methods: {
     guess: function (word) {
       if (this.finished) return;
@@ -92,7 +91,7 @@ export default {
         this.finished
       );
 
-      this.guessNumber++;
+      this.$store.commit("incrementGuessNumber");
     },
     scrollToWord: function (word) {
       this.clearHighlights();
@@ -138,13 +137,11 @@ export default {
       });
 
       if (finished) {
-        this.finished = true;
+        this.$store.commit("setFinished", true);
         revealAll(this.article, this.words);
-        alert(
-          "Felicidades! Has averiguado el artículo en " +
-            this.guessNumber +
-            " palabras"
-        );
+        this.$vfm.show({
+          component: "WinModal",
+        });
       }
     },
   },
