@@ -21,6 +21,23 @@
       <div class="share-button-container">
         <button class="share-button" @click="share">Compartir resultado</button>
       </div>
+      <div class="media-buttons">
+        <a class="media-link" :href="twitterShareLink" target="_blank"
+          ><img
+            class="media-icon twitter-share-button"
+            src="https://cdn.cdnlogo.com/logos/t/96/twitter-icon.svg"
+        /></a>
+        <a class="media-link" :href="whatsappShareLink" target="_blank"
+          ><img
+            class="media-icon"
+            src="https://cdn.cdnlogo.com/logos/w/29/whatsapp-icon.svg"
+        /></a>
+        <a class="media-link" :href="telegramShareLink" target="_blank"
+          ><img
+            class="media-icon"
+            src="https://cdn.cdnlogo.com/logos/t/84/telegram.svg"
+        /></a>
+      </div>
     </div>
   </vue-final-modal>
 </template>
@@ -46,8 +63,20 @@ export default {
     shareText: function () {
       return `He adivinado el Wikidle de hoy en ${this.guessNumber} palabras!`;
     },
+    shareTextEncoded: function () {
+      return encodeURIComponent(this.shareText);
+    },
     shareTitle: function () {
       return `Wikidle ${this.articleDayFormatted}`;
+    },
+    twitterShareLink: function () {
+      return `https://twitter.com/intent/tweet?text=${this.shareTextEncoded}&url=${this.shareUrl}`;
+    },
+    whatsappShareLink: function () {
+      return `https://wa.me/?text=${this.shareTextEncoded}%0A${this.shareUrl}`;
+    },
+    telegramShareLink: function () {
+      return `https://t.me/share/url?url=${this.shareUrl}&text=${this.shareTextEncoded}`;
     },
   },
   methods: {
@@ -110,5 +139,22 @@ export default {
   border: 1px solid black;
   border-radius: 3px;
   padding: 10px 20px;
+}
+
+.media-buttons {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.media-link {
+  height: 2rem;
+  margin: 0 0.5rem;
+}
+
+.media-icon {
+  max-height: 100%;
 }
 </style>
