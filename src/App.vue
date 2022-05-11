@@ -1,14 +1,17 @@
 <template>
+  <ModalsContainer />
   <GameView />
 </template>
 
 <script>
 import GameView from "./components/GameView.vue";
+import { ModalsContainer } from "vue-final-modal";
 
 export default {
   name: "App",
   components: {
     GameView,
+    ModalsContainer,
   },
 };
 </script>

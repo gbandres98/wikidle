@@ -17,7 +17,8 @@
     "lodash.deburr": "^4.1.0",
     "rosaenlg-pluralize-es": "^3.2.1",
     "uuid": "^8.3.2",
-    "vue": "^3.2.33"
+    "vue": "^3.2.33",
+    "vue-final-modal": "^3.4.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

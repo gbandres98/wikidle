@@ -1,6 +1,9 @@
 <template>
   <div class="game">
-    <ArticleText :article="article" :words="words" @click="clearHighlights" />
+    <div class="game-main">
+      <NavbarComponent />
+      <ArticleText :article="article" :words="words" @click="clearHighlights" />
+    </div>
     <ControlBar
       :guesses="guesses"
       @guess="guess"
@@ -24,10 +27,11 @@ import { saveLocalData, loadLocalGameData } from "@/game/localData";
 import commonWords from "@/game/commonWords";
 import ArticleText from "@/components/ArticleText.vue";
 import ControlBar from "@/components/ControlBar.vue";
+import NavbarComponent from "@/components/NavbarComponent.vue";
 
 export default {
   name: "GameView",
-  components: { ArticleText, ControlBar },
+  components: { ArticleText, ControlBar, NavbarComponent },
   data() {
     return {
       article: {},
@@ -158,7 +162,7 @@ export default {
     flex: 0 0 450px;
   }
 
-  .articleText {
+  .game-main {
     flex: 0 0 calc(100vw - 500px);
   }
 }

@@ -1,7 +1,6 @@
 import { FieldValue } from "@google-cloud/firestore";
 import { http } from "@google-cloud/functions-framework";
 import firebase from "firebase-admin";
-import functions from "firebase-functions";
 
 firebase.initializeApp();
 
@@ -81,6 +80,8 @@ const increaseGuesses = async (date, count) => {
 
   const doc = await firebase.firestore().doc(id);
 
+  count = parseInt(count);
+
   return doc.update({
     guesses: FieldValue.increment(count),
   });
@@ -98,28 +99,33 @@ const calculateAverage = async (date) => {
   });
 };
 
-exports.onStatCreate = functions.firestore
-  .document("/stats/games/{year}/{month}/{day}/{userId}")
-  .onWrite(async (change, context) => {
-    if (context.params.userId === "resume") return;
+const onStatCreate = async (event, context) => {
+  const newGame = event.value.fields.game.mapValue.fields;
 
-    if (!change.after.exists) return; //Delete
+  if (context.params.userId === "resume") return;
 
-    const day = change.after.data().day;
-    if (!day) return;
+  console.log("guesses");
+  console.log(newGame.guessNumber.integerValue);
 
-    await checkOrCreateStatResume(day);
+  const day = newGame.day.stringValue;
+  if (!day) return;
 
-    // New Game
-    if (!change.before.exists) {
-      increaseGames(day);
-      return;
-    }
+  await checkOrCreateStatResume(day);
 
-    // Won game
-    if (!change.before.data().finished && change.after.data().finished) {
-      await increaseWins(day);
-      await increaseGuesses(day, change.after.data().guessNumber);
-      calculateAverage(day);
-    }
-  });
+  // New Game
+  if (!event.oldValue || !event.oldValue.fields) {
+    increaseGames(day);
+    return;
+  }
+
+  const oldGame = event.oldValue.fields.game.mapValue.fields;
+
+  // // Won game
+  if (!oldGame.finished.booleanValue && newGame.finished.booleanValue) {
+    await increaseWins(day);
+    await increaseGuesses(day, newGame.guessNumber.integerValue);
+    calculateAverage(day);
+  }
+};
+
+export { onStatCreate };
