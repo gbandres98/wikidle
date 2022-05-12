@@ -1,4 +1,11 @@
 const commonWords = [
+  "un",
+  "uno",
+  "unos",
+  "una",
+  "unas",
+  "su",
+  "sus",
   "del",
   "muy",
   "más",
