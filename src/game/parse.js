@@ -4,6 +4,10 @@ const parseArticle = (article) => {
 
   articleText = articleText.replace(/\[\S+\]/g, "");
 
+  articleText = articleText.replace(/{[^{}]+}/g, "");
+
+  articleText = articleText.replace(/\n\s*\n/g, "\n");
+
   articleText = replaceTitles(articleText);
 
   const parser = new DOMParser();

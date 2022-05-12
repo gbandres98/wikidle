@@ -51,7 +51,7 @@ export default {
 .article-h2,
 .article-h3,
 .article-h4 {
-  margin: 0;
+  margin: 10px 0 0 0;
 }
 
 .article-h3,
