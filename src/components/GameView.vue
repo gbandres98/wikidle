@@ -57,7 +57,6 @@ export default {
       if (!gameData) return;
 
       gameData.guesses.forEach((guess) => this.guess(guess.word));
-      this.$store.commit("setFinished", true);
     });
   },
   computed: mapState(["finished", "articleDay", "guessNumber"]),
