@@ -129,11 +129,15 @@ export default {
         .forEach((e) => e.classList.remove("highlight"));
     },
     checkWin: function () {
-      const finished = this.articleTitle.split(/[ -.,]/).every((word) => {
-        word = normalize(word);
-        if (commonWords.map((cw) => normalize(cw)).includes(word)) return true;
-        return this.guesses.some((guess) => guess.word === word);
-      });
+      const finished = this.articleTitle
+        .split(/[ -.,)(]/)
+        .filter((word) => word)
+        .every((word) => {
+          word = normalize(word);
+          if (commonWords.map((cw) => normalize(cw)).includes(word))
+            return true;
+          return this.guesses.some((guess) => guess.word === word);
+        });
 
       if (finished) {
         this.$store.commit("setFinished", true);
