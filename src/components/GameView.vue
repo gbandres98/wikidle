@@ -90,7 +90,7 @@ export default {
         this.finished
       );
 
-      this.$store.commit("incrementGuessNumber");
+      if (!this.finished) this.$store.commit("incrementGuessNumber");
     },
     scrollToWord: function (word) {
       this.clearHighlights();
