@@ -9,6 +9,7 @@ const articleIDFromDate = (date) =>
 
 const dayHasArticle = async (date) => {
   const articleRef = firebase.firestore().doc(articleIDFromDate(date));
+
   const doc = await articleRef.get();
   return doc.exists;
 };
@@ -53,11 +54,11 @@ const saveRandomArticle = async (date) => {
 
 const date = new Date();
 
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 365; i++) {
   const dateCopy = new Date(date.getTime());
   const articleExists = await dayHasArticle(dateCopy);
 
-  if (articleExists) {
+  if (!articleExists) {
     saveRandomArticle(dateCopy);
   }
 
